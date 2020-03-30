@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :find_domain
+  before_action :find_domain
 
   active_scaffold :user do |config|
     config.columns = [:id, :name, :fullname, :email, :quota, :admin_for, :password1, :password1_confirmation]
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     config.list.per_page = 20
 
     config.actions = [:show, :live_search, :create, :update, :list, :delete]
-    config.action_links.add 'upload', :label => "Import CSV", :type => :table, :inline => true 
+    config.action_links.add 'upload', :label => "Import CSV", :type => :table, :inline => true
 
     config.show.link.label = "Domain Admin"
     config.show.label = ""
