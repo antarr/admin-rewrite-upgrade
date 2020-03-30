@@ -10,7 +10,7 @@ class AuthController < ApplicationController
     reset_session # Make sure everything is cleared up before logging in
     if admin = Admin.authenticate(params[:admin][:username], params[:admin][:password])
       session[:admin_id] = admin.id
-      redirect_to controller: 'dashboard'
+      redirect_to dashboard_index_path
     else
       flash[:error] = "Incorrect username or password"
       render "new"
