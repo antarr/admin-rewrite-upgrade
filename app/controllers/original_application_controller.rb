@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
   layout proc{ |c| c.request.xhr? ? false : "application" }
 
-  before_filter :https_check
   before_filter :authenticate
 
-  # See ActionController::RequestForgeryProtection for details
   protect_from_forgery
   filter_parameter_logging :password, :authenticity_token if Rails.env.production?
 
@@ -39,9 +37,4 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = nil)
     { :protocol => "https" } if Rails.env == "production"
   end
-
-  def https_check
-    request.env["HTTPS"] = "on" unless request.remote_ip.to_s == "127.0.0.1"
-  end
-
 end
