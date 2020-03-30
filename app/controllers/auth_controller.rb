@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AuthController < ApplicationController
   skip_before_action :authenticate
 
@@ -13,8 +15,8 @@ class AuthController < ApplicationController
       session[:admin_id] = admin.id
       redirect_to dashboard_index_path
     else
-      flash[:error] = "Incorrect username or password"
-      render "new"
+      flash[:error] = 'Incorrect username or password'
+      render 'new'
     end
   end
 

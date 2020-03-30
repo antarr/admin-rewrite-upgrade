@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class GettingStartedControllerTest < ActionDispatch::IntegrationTest
-  test "visiting getting started page" do
-    get "/getting_started"
+  test 'visiting getting started page' do
+    get '/getting_started'
 
     assert_response :success
     assert_match(/Getting Started/, response.body)
