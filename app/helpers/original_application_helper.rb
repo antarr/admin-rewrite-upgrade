@@ -1,4 +1,4 @@
-module ApplicationHelper
+module OriginalApplicationHelper
 
   def current_user
     @current_user ||= Admin.find(session[:admin_id])

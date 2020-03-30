@@ -3,9 +3,14 @@ Rails.application.routes.draw do
 
   # This is where the home page lives
 #   map.root :controller => 'auth', :action => 'index'
+  root to: 'auth#new'
 
-# #  map.login  '/',  :controller => 'auth', :action => 'login'
-#   map.logout '/logout', :controller => 'auth', :action => 'logout'
+  resources :auth, only: [:new, :create]
+  get '/logout', controller: 'auth', action: 'logout'
+
+  resources :getting_started, only: [:index, :create]
+
+  resources :dashboard, only: [:index]
 
 #   map.resources :domains, :active_scaffold => true do |domain|
 #     domain.resources :users, :active_scaffold => true

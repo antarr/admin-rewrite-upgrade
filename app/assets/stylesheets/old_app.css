@@ -19,29 +19,24 @@
 
 /* @end */
 
-.submit
-{
+.submit {
   margin-left: 13em;
   margin-top: 1em;
 }
 
-#save
-{
+#save {
   margin-top: 1em;
 }
 
-.center
-{
+.center {
   text-align: center;
 }
 
-.margin-top2
-{
+.margin-top2 {
   margin-top: 2em;
 }
 
-.margin-top4
-{
+.margin-top4 {
   margin-top: 4em;
 }
 
@@ -53,17 +48,15 @@
   margin-bottom: 4em;
 }
 
-#content 
-{
+#content {
   border: 1px solid #e5e5e5;
   padding: 2em;
   font-size: 110%;
   background-color: #fff;
 }
 
-div.scrolling
-{
-  overflow:auto;
+div.scrolling {
+  overflow: auto;
   border: 1px solid #ccc;
   margin: 2em 4em;
   padding: 0.5em;
@@ -77,20 +70,19 @@ div.scrolling
 
 /* @group Menu */
 
-#header
-{
+#header {
   background: url(/images/blueback.png) repeat-x;
 }
 
-#logintext, #logintext a {
+#logintext,
+#logintext a {
   text-align: right;
   padding-bottom: 0.1em;
   font-weight: normal;
   color: #fff;
 }
 
-#footer
-{
+#footer {
   color: #696969;
   background-color: #efefef;
   text-align: center;
@@ -111,13 +103,11 @@ div.scrolling
 
 /* @group login */
 
-#login
-{
+#login {
   text-align: center
 }
 
-#login fieldset
-{
+#login fieldset {
   margin-left: auto;
   margin-right: auto;
   margin-top: 150px;
@@ -127,14 +117,12 @@ div.scrolling
   padding: 30px;
 }
 
-#login fieldset legend
-{
+#login fieldset legend {
   padding: 0.5em 1em;
   color: gray;
 }
 
-#login label
-{
+#login label {
   font-weight: bold;
   color: gray;
   margin-right: 0.5em;
@@ -142,14 +130,12 @@ div.scrolling
   text-align: right;
 }
 
-#login form p
-{
+#login form p {
   text-align: right;
   margin-right: 4em;
 }
 
-input
-{
+input {
   font-size: 140%;
 }
 
@@ -160,18 +146,23 @@ input
   border: 3px solid #003d85;
   border: 1px solid black;
 }
+
 #auth h4 {
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 140%;
 }
+
 #auth form p {
   padding: 3px;
 }
+
 #auth #submit {
   margin-top: 10px;
 }
-#auth div.error, #auth div.notice {
+
+#auth div.error,
+#auth div.notice {
   margin: 10px 10px 10px 10px;
   padding: 5px 10px;
   font-weight: bold;
@@ -194,13 +185,13 @@ input
   width: auto;
 }
 
-.not_logged_in td, .not_logged_in th {
+.not_logged_in td,
+.not_logged_in th {
   border: 1px solid #bbb;
   padding: 5px;
 }
 
-.not_logged_in .fieldWithErrors
-{
+.not_logged_in .fieldWithErrors {
   background-color: inherit;
   border: none;
   padding: 0;
@@ -219,8 +210,7 @@ input
 
 /* @end */
 
-.percent
-{
+.percent {
   font-size: 80%;
   color: #757575;
   font-weight: bold;

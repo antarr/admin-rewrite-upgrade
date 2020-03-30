@@ -1,31 +1,32 @@
 class GettingStartedController < ApplicationController
-  layout "not_logged_in"
-  before_filter :authorize
-  skip_before_filter :authenticate
+  # before_filter :authorize
+  # skip_before_filter :authenticate
 
   def index
-    redirect_to :action => "step1"
+    @admin = Admin.new
+    render layout: "not_logged_in"
   end
 
-  def step1 # Admin User
-    @admin = Admin.new
-    if request.post?
-      @admin = Admin.new
-      @admin.attributes = params[:admin]
-      if @admin.save
-        flash[:notice] = "Getting Started finished Successfully. You can now login to the appliance."
-        redirect_to root_url
-      end
+  def create
+    @admin = Admin.new(admin_params)
+
+    if @admin.save
+      redirect_to root_url, notice: "Getting Started finished Successfully. You can now login to the appliance."
+    else
+      render "index", layout: "not_logged_in"
     end
   end
 
   private
 
+  def admin_params
+    params.require(:admin).permit(:username, :email, :password, :password_confirmation)
+  end
+
   def authorize
     unless Admin.count.zero? || Rails.env == "development"
       flash[:error] = "Getting Started can only run if no admins has been configured"
-      redirect_to root_url
+      redirect_to(root_url) and return
     end
   end
-
 end
