@@ -1,7 +1,8 @@
-class System::AdministratorsController < ApplicationController
+# frozen_string_literal: true
 
+class System::AdministratorsController < ApplicationController
   active_scaffold :admins do |config|
-    config.columns = [:username, :email, :pass, :pass_confirmation]
+    config.columns = %i[username email pass pass_confirmation]
     config.list.columns.exclude :pass, :pass_confirmation
     config.actions.swap :search, :live_search
     config.actions.exclude :show
@@ -12,5 +13,4 @@ class System::AdministratorsController < ApplicationController
     config.create.columns.exclude :id
     config.update.columns.exclude :id
   end
-
 end

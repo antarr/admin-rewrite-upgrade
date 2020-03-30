@@ -1,23 +1,25 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :find_domain
 
   active_scaffold :user do |config|
-    config.columns = [:id, :name, :fullname, :email, :quota, :admin_for, :password1, :password1_confirmation]
+    config.columns = %i[id name fullname email quota admin_for password1 password1_confirmation]
     config.list.columns.exclude :password1, :password1_confirmation
     config.update.columns.exclude :admin_for
     config.create.columns.exclude :admin_for
     config.list.per_page = 20
 
-    config.actions = [:show, :live_search, :create, :update, :list, :delete]
-    config.action_links.add 'upload', :label => "Import CSV", :type => :table, :inline => true
+    config.actions = %i[show live_search create update list delete]
+    config.action_links.add 'upload', label: 'Import CSV', type: :table, inline: true
 
-    config.show.link.label = "Domain Admin"
-    config.show.label = ""
+    config.show.link.label = 'Domain Admin'
+    config.show.label = ''
 
-    config.columns[:admin_for].label = "Domain Admin for"
-    config.columns[:password1].label = "Password"
-    config.columns[:password1_confirmation].label = "Confirm Password"
-    config.columns[:quota].description = "MB"
+    config.columns[:admin_for].label = 'Domain Admin for'
+    config.columns[:password1].label = 'Password'
+    config.columns[:password1_confirmation].label = 'Confirm Password'
+    config.columns[:quota].description = 'MB'
     columns[:password1].form_ui = :password
     columns[:password1_confirmation].form_ui = :password
     config.create.columns.exclude :id, :email
@@ -27,7 +29,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @domains = Domain.all
-    @user.admin_for.each {|d| @domains.delete(d)}
+    @user.admin_for.each { |d| @domains.delete(d) }
   end
 
   def save_admin_domains
@@ -40,47 +42,46 @@ class UsersController < ApplicationController
   end
 
   def upload
-    render :partial => "upload"
+    render partial: 'upload'
   end
 
   def import
     new_devs = csv_to_array_of_thing_hashes(params[:csv_file].read)
 
     imported = 0
-    new_devs.each_pair do |k, thing|
-      unless thing[:name].blank?
-        user = User.new(thing)
-        user.domain_id = @domain.id
-        imported += 1 if user.save
-      end
+    new_devs.each_pair do |_k, thing|
+      next if thing[:name].blank?
+
+      user = User.new(thing)
+      user.domain_id = @domain.id
+      imported += 1 if user.save
     end
-    if imported.zero?
-      flash[:notice] = "Nothing imported"
-    else
-      flash[:notice] = "Successfully imported #{imported} users"
-    end
-    redirect_to :controller => 'domains', :action => 'show', :id => @domain.id
+    flash[:notice] = if imported.zero?
+                       'Nothing imported'
+                     else
+                       "Successfully imported #{imported} users"
+                     end
+    redirect_to controller: 'domains', action: 'show', id: @domain.id
   end
 
   private
 
-  def find_domain
-    @domain = Domain.find(params[:domain_id])
-  end
-
-  def csv_to_array_of_thing_hashes(data)
-    data = data.gsub('"','')
-    things = {}
-    csv = FasterCSV.new(data, :headers => true)
-    csv.each do |row|
-      thing = {}
-      row.to_hash.each_pair do |k,v|
-        k = k.to_sym
-        thing.store(k,v)
-        things[thing[:name]] = thing
-      end
+    def find_domain
+      @domain = Domain.find(params[:domain_id])
     end
-    return things
-  end
 
+    def csv_to_array_of_thing_hashes(data)
+      data = data.delete('"')
+      things = {}
+      csv = FasterCSV.new(data, headers: true)
+      csv.each do |row|
+        thing = {}
+        row.to_hash.each_pair do |k, v|
+          k = k.to_sym
+          thing.store(k, v)
+          things[thing[:name]] = thing
+        end
+      end
+      things
+    end
 end

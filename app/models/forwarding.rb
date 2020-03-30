@@ -1,19 +1,22 @@
-class Forwarding < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Forwarding < ApplicationRecord
   belongs_to :domain
-  validates_presence_of :source, :destination
-  validates_uniqueness_of :source, :case_sensitive => false
+  validates :source, :destination, presence: true
+  validates :source, uniqueness: { case_sensitive: false }
 
   def before_validation
-    self.source = source + "@" + domain.name unless source.match(/@/)
+    self.source = source + '@' + domain.name unless /@/.match?(source)
   end
 
   def validate
     source =~ /^([^@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/
-    errors.add("source", "needs to be in the #{domain.name} domain") unless $2 == domain.name
+    unless Regexp.last_match(2) == domain.name
+      errors.add('source', "needs to be in the #{domain.name} domain")
+    end
   end
 
   def to_label
     source
   end
-
 end

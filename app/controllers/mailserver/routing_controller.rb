@@ -1,5 +1,6 @@
-class Mailserver::RoutingController < ApplicationController
+# frozen_string_literal: true
 
+class Mailserver::RoutingController < ApplicationController
   def index
     @routes = Routing.find(:all)
   end
@@ -14,5 +15,4 @@ class Mailserver::RoutingController < ApplicationController
     @route = Routing.find params[:id]
     @route.destroy
   end
-
 end

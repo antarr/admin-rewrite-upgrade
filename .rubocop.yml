@@ -1,0 +1,37 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.6
+
+  Exclude:
+    - "bin/*"
+    - "db/**/*"
+    - "node_modules/**/*"
+    - "test/test_helper.rb"
+    - "config/environments/**/*"
+    - "config/initializers/*.rb"
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Method definitions after `private` or `protected` isolated calls need one
+# extra level of indentation.
+Layout/IndentationConsistency:
+  Enabled: true
+  EnforcedStyle: indented_internal_methods
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
