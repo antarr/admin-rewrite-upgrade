@@ -1,5 +1,5 @@
 class GettingStartedController < ApplicationController
-  # before_filter :authorize
+  # before_action :authorize
   skip_before_action :authenticate
 
   def index
