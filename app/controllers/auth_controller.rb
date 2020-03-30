@@ -1,19 +1,19 @@
 class AuthController < ApplicationController
-  layout nil
-  skip_before_filter :authenticate
+  # skip_before_filter :authenticate
 
-  def login
-    if request.post?
-      reset_session # Make sure everything is cleared up before logging in
-      if admin = Admin.authenticate(params[:admin][:username], params[:admin][:password])
-        session[:admin_id] = admin.id
-        redirect_to :controller => 'dashboard'
-      else
-        flash[:error] = "Incorrect username or password"
-        redirect_to :action => 'index'
-      end
+  def new
+    @admin = Admin.new
+    render layout: nil
+  end
+
+  def create
+    reset_session # Make sure everything is cleared up before logging in
+    if admin = Admin.authenticate(params[:admin][:username], params[:admin][:password])
+      session[:admin_id] = admin.id
+      redirect_to controller: 'dashboard'
     else
-      redirect_to root_path
+      flash[:error] = "Incorrect username or password"
+      render "new"
     end
   end
 
@@ -22,5 +22,4 @@ class AuthController < ApplicationController
     reset_session
     redirect_to root_path
   end
-
 end

@@ -4,8 +4,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<%-# javascript_include_tag :defaults, 'yui/yahoo-dom-event', 'yui/container-min', 'yui/element-beta', 'yui/menu-min', 'yui/button-min', :cache => 'javascript' %>
-	<%-# stylesheet_link_tag "yui/_reset-fonts-grids", 'yui/menu', 'yui/container', 'yui/button', :cache => 'yui/stylesheet' %>
-	<%-# stylesheet_link_tag '_base', 'application', 'example', 'menu', 'error', 'password_strength', :cache => 'stylesheet' %>
+	<%-# stylesheet_link_tag "yui" %>
+	<%-# stylesheet_link_tag "auth" %>
 	<title>Mailserver Administration</title>
 </head>
 <body id="<%= page_id -%>" class="yui-skin-sam">
@@ -21,16 +21,16 @@
 
 	<h4><%= CONF['product'].capitalize %> Administration</h4>
   <fieldset>
-    <% form_for :admin, Admin.new, :url => {:action => "login"} do |f| %>
+    <%= form_for @admin, url: auth_index_path do |f| %>
 
   		<p>
   		  <%= f.label :username, "Username" %>
-  			<%= f.text_field :username -%>
+  			<%= f.text_field :username %>
   		</p>
 
   		<p>
   		  <%= f.label :password, "Password" %>
-  			<%= f.password_field :password -%>
+  			<%= f.password_field :password %>
   		</p>
 
   		<p><%= submit_tag "Login", { :id => 'submit' } %></p>

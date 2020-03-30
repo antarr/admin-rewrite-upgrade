@@ -3,7 +3,7 @@ class Admin < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_confirmation_of :password
   validates_presence_of :password
-  validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/, :allow_blank => true
+  # validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/, :allow_blank => true
   validates_length_of :password, :minimum => 6
   attr_accessor :pass, :pass_confirmation
 
@@ -16,7 +16,7 @@ class Admin < ActiveRecord::Base
   end
 
   def self.authenticate (username, password)
-    find(:first, :conditions => [ "username = ? AND password = ?", username, password ])
+    find_by(username: username, password: password)
   end
 
   def self.emails

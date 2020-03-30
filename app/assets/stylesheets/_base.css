@@ -3,58 +3,114 @@ html {
   background-color: #4B7399;
 }
 
-body, p, td, tr, th, h1, h2, h3, h4, h5, h6, ul, li
-{
+body,
+p,
+td,
+tr,
+th,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li {
   font-family: "Lucida Grande", Helvetica, Verdana, Arial;
 }
 
-body
-{
-/*  margin: 1em;*/
-/*  font-size: 0.6em;*/
+body {
+  /*  margin: 1em;*/
+  /*  font-size: 0.6em;*/
 }
 
-html>body
-{
-/*  font-size: 0.6em;*/
+html>body {
+  /*  font-size: 0.6em;*/
 }
 
 /* SORT OUT HEADER FORMATTING AND SIZES */
-h1, h2, h3, h4, h5 {font-weight: bold;}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: bold;
+}
 
-h1 { font-size: 1.8em; }
-h2 { font-size: 1.6em; }
-h3 { font-size: 1.5em; }
-h4 { font-size: 1.2em; }
-h5 { font-size: 1.1em; }
-h6 { font-size: 1em; }
-pre,code { font-size:1em; }
+h1 {
+  font-size: 1.8em;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+h5 {
+  font-size: 1.1em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+pre,
+code {
+  font-size: 1em;
+}
 
 #doc3 {
-/*  width: 1000px;
+  /*  width: 1000px;
   *width: 1050px;*/
   background-color: #fff;
   margin: 10px;
   border: solid 1px black;
 }
 
-#bd { 
+#bd {
   padding: 20px;
   background-color: #fff;
 }
 
 /* HARMONIZE LINKS, KILL BORDER ON IMG LINKS */
 
-a {text-decoration: underline;}
-a:link, a:visited {color: #00f;}
-a:hover {color: #33f;}
-a:active {color: #fff;}
-a img, :link img, :visited img {border: none}
+a {
+  text-decoration: underline;
+}
 
-/* link underlines tend to make hypertext less readable, 
+a:link,
+a:visited {
+  color: #00f;
+}
+
+a:hover {
+  color: #33f;
+}
+
+a:active {
+  color: #fff;
+}
+
+a img,
+:link img,
+:visited img {
+  border: none
+}
+
+/* link underlines tend to make hypertext less readable,
    because underlines obscure the shapes of the lower halves of words */
 
-:link,:visited { text-decoration:none }
+:link,
+:visited {
+  text-decoration: none
+}
 
 
 pre {
@@ -66,18 +122,15 @@ pre {
   font-family: "Courier New", Courier, mono;
 }
 
-fieldset
-{
+fieldset {
   border: 0;
 }
 
-fieldset div
-{
+fieldset div {
   padding: 0.5em 0;
 }
 
-legend
-{
+legend {
   font-weight: bold;
   padding: 0.3em 0.5em;
   font-size: 1.2em;
@@ -87,13 +140,12 @@ label {
   font-weight: bold;
 }
 
-blockquote
-{
-  margin:  1em;
+blockquote {
+  margin: 1em;
 }
 
-select, textarea
-{
+select,
+textarea {
   margin: 0.5em 0 0 0;
 }
 
@@ -110,8 +162,8 @@ h2 {
 }
 
 h3 {
-  margin-bottom: 1.2em; 
-  background-color: #eee; 
+  margin-bottom: 1.2em;
+  background-color: #eee;
   padding: 0.5em 0;
 }
 
@@ -119,13 +171,11 @@ input {
   font-size: 110%;
 }
 
-a:hover
-{
+a:hover {
   text-decoration: underline;
 }
 
-caption
-{
+caption {
   text-align: left;
   font-weight: bold;
   font-size: 120%;
@@ -133,10 +183,10 @@ caption
   color: #757575;
 }
 
-caption.first
-{
+caption.first {
   margin-top: 0;
 }
+
 /*
 th
 {
@@ -162,7 +212,8 @@ td
   padding: 0.8em;
 }
 */
-table .noborder td, table .noborder th {
+table .noborder td,
+table .noborder th {
   border: 0;
 }
 
@@ -170,16 +221,16 @@ table .noborder td, table .noborder th {
   margin: 0.3em;
 }
 
-td.edit
-{
+td.edit {
   border: none;
   text-align: left;
 }
 
-th.center, td.center
-{
+th.center,
+td.center {
   text-align: center;
 }
+
 /*
 tfoot td
 {

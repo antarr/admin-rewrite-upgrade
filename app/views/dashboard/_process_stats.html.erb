@@ -49,7 +49,7 @@
 
 <% javascript_tag do %>
 Event.observe(window, 'load', function() {
-  <%= remote_function(:update => "http_test", :url => { :action => :http_test }) %>
-  <%= remote_function(:update => "https_test", :url => { :action => :https_test }) %>
+  <%-# remote_function(:update => "http_test", :url => { :action => :http_test }) %>
+  <%-# remote_function(:update => "https_test", :url => { :action => :https_test }) %>
 });
 <% end %>
