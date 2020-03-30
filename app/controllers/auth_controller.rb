@@ -1,5 +1,5 @@
 class AuthController < ApplicationController
-  # skip_before_filter :authenticate
+  skip_before_action :authenticate
 
   def new
     @admin = Admin.new

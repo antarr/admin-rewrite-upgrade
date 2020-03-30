@@ -1,6 +1,6 @@
 class GettingStartedController < ApplicationController
   # before_filter :authorize
-  # skip_before_filter :authenticate
+  skip_before_action :authenticate
 
   def index
     @admin = Admin.new
