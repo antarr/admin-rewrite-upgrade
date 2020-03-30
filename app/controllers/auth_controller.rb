@@ -7,7 +7,8 @@ class AuthController < ApplicationController
   end
 
   def create
-    reset_session # Make sure everything is cleared up before logging in
+    reset_session
+
     if admin = Admin.authenticate(params[:admin][:username], params[:admin][:password])
       session[:admin_id] = admin.id
       redirect_to dashboard_index_path
