@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # This is where the home page lives
 #   map.root :controller => 'auth', :action => 'index'
+  root to: 'auth#index'
 
 # #  map.login  '/',  :controller => 'auth', :action => 'login'
 #   map.logout '/logout', :controller => 'auth', :action => 'logout'

@@ -1,0 +1,6 @@
+production:
+  product: mailserver
+development:
+  product: mailserver
+test:
+  product: mailserver
