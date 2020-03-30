@@ -7,4 +7,7 @@
 3. run `rails db:create:all` to create database(s)
 4. run `rails db:schema:load` to load the schema into the database.
 
-- [ ] Get App to Boot
+## Testing
+
+1. run `rails test`
+2. run `rails test:system` to run system tests
