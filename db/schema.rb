@@ -1,5 +1,6 @@
 ActiveRecord::Schema.define(:version => 20101216072412) do
 
+  # administrators for domains
   create_table "administrators", :force => true do |t|
     t.integer  "domain_id"
     t.integer  "user_id"
@@ -7,6 +8,7 @@ ActiveRecord::Schema.define(:version => 20101216072412) do
     t.datetime "updated_at"
   end
 
+  # admins to connect to the app
   create_table "admins", :force => true do |t|
     t.string   "username",   :limit => 32,  :default => "", :null => false
     t.string   "password",   :limit => 32,  :default => "", :null => false
@@ -33,11 +35,6 @@ ActiveRecord::Schema.define(:version => 20101216072412) do
     t.text     "destination",                                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "routings", :force => true do |t|
-    t.string "destination", :limit => 128
-    t.string "transport",   :limit => 128
   end
 
   create_table "sessions", :force => true do |t|
