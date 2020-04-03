@@ -4,6 +4,7 @@ class AuthController < ApplicationController
   skip_before_action :authenticate
 
   def new
+    redirect_to("/getting_started") && return unless Admin.any?
     @admin = Admin.new
     render layout: nil
   end
