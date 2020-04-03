@@ -16,6 +16,7 @@ class AuthController < ApplicationController
       session[:admin_id] = admin.id
       redirect_to dashboard_index_path
     else
+      @admin = Admin.new
       flash[:error] = 'Incorrect username or password'
       render 'new'
     end
