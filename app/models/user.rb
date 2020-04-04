@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include User::Authentication
+
   belongs_to :domain
   has_many :administrators
   has_many :admin_for, through: :administrators, source: :domain
   validates :name, :domain_id, :fullname, presence: true
   validates :name, format: { with: /^[a-zA-Z0-9_\.\-]+$/ }
   validates :name, uniqueness: { scope: :domain_id, case_sensitive: false }
-  validates :password1, length: { minimum: 6, allow_blank: true }
-  validates :password1, confirmation: { allow_blank: true }
+  # validates :password1, length: { minimum: 6, allow_blank: true }
+  # validates :password1, confirmation: { allow_blank: true }
   validates :quota, numericality: { only_integer: true, allow_blank: true }
   attr_accessor :password1, :password1_confirmation
 
